@@ -2,6 +2,12 @@
 
 Personal bash tinkering
 
+## Reboot & Shutdown
+
+sudo shutdown -h -now
+
+reboot
+
 ## (Environment) Variables
 
 ```bash
