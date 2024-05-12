@@ -10,9 +10,27 @@ pkill -f "processname"
 
 ## Reboot & Shutdown
 
-sudo shutdown -h -now
+The recommended way is via systemd, using the systemctl command
 
+Shutsdown the computer in a controlled manner and logs it
+
+
+
+```bash
+sudo systemctl reboot
+
+sudo systemctl poweroff
+```
+
+Shutsdown or reboots without systemd
+
+```bash
+sudo shutdown -h -now
 reboot
+```
+
+
+
 
 ## (Environment) Variables
 
