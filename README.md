@@ -2,6 +2,12 @@
 
 Personal bash tinkering
 
+## Kill process
+
+```bash
+pkill -f "processname"
+```
+
 ## Reboot & Shutdown
 
 sudo shutdown -h -now
