@@ -2,6 +2,22 @@
 
 Personal bash tinkering
 
+## Find a process
+
+Gets data about processes
+
+```bash
+ps -aux
+ps -aux | grep "processname"
+```
+
+Gets process id
+
+```bash
+pgrep processname
+```
+
+
 ## Kill process
 
 ```bash
