@@ -45,7 +45,46 @@ sudo shutdown -h -now
 reboot
 ```
 
+## Logs
 
+journalctl (journald) can be used on systems with systemd to view logs
+
+```bash
+# similar to tail -n 50
+journalctl -n 50
+```
+
+```bash
+# print all of the info using the -a option, grep "CPU" and view interactivly with less
+journalctl -a | grep "CPU" | less
+```
+
+```bash
+# syslog msg levels
+
+#    0: emerg
+#    1: alert
+#    2: crit
+#    3: err
+#    4: warning
+#    5: notice
+#    6: info
+#    7: debug
+
+# shows all the `err` msg's for this boot
+journalctl -p err -b
+```
+
+```bash
+# logs in reverse order (new first)
+journalctl -r
+```
+
+```bash
+# logs only for 24h back
+# --since "2024-05-22" 
+journalctl --since=yesterday --until=now
+```
 
 
 ## (Environment) Variables
