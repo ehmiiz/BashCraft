@@ -86,6 +86,14 @@ journalctl -r
 journalctl --since=yesterday --until=now
 ```
 
+dmesg prints or controls the kernel ring buffer
+
+can be used to view kernel related logs
+
+```bash
+# displays nvidia related kernel logs
+sudo dmesg | grep nvidia
+```
 
 ## (Environment) Variables
 
