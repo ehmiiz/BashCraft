@@ -117,6 +117,24 @@ echo $((int_variable + int_variable))
 ~$ 50
 ```
 
+## Hardware checks
+
+```bash
+# Checks storage
+df -h
+```
+
+```bash
+# Checks memory
+free -m
+```
+
+```bash
+# view cpu, view usb
+lscpu
+lsusb
+```
+
 ## Copy and Paste (Wayland)
 
 ```bash
