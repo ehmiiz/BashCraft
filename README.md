@@ -117,6 +117,14 @@ echo $((int_variable + int_variable))
 ~$ 50
 ```
 
+### Regular variables
+
+```bash
+myvar=TJABBA
+
+echo $myvar //output TJABBA
+```
+
 ## Hardware checks
 
 ```bash
