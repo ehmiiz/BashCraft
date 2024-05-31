@@ -215,9 +215,11 @@ sudo grubby --default-title
 ### : to enter a command
 
 - w -> saves without exit
-- x -> saves and exits
-- q -> quits without saving
-- qa! ->
+- wq -> saves and quit
+- x -> saves and exits (same as wq)
+- q -> quits
+- q! -> quits without saving
+- qa! -> quits all without saving
 - u -> undo last change
 - ctrl-r -> redo
 
