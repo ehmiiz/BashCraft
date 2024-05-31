@@ -208,17 +208,18 @@ sudo grubby --default-title
 
 ## VIM / NEOVIM
 
-`esc` to enter command mode
-`i` to enter insert
-`v` to enter visual mode
+- `esc` to enter command mode
+- `i` to enter insert
+- `v` to enter visual mode
 
-: to enter a command
-w -> saves without exit
-x -> saves and exits
-q -> quits without saving
-qa! ->
-u -> undo last change
-ctrl-r -> redo
+### : to enter a command
+
+- w -> saves without exit
+- x -> saves and exits
+- q -> quits without saving
+- qa! ->
+- u -> undo last change
+- ctrl-r -> redo
 
 This section will probably be a bit lengthy xD
 
