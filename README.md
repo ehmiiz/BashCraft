@@ -169,3 +169,62 @@ man -k clip
 ```bash
 ffmpeg -i Recording.mp4 -vf "fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0]palettegen[p];[s1][p]paletteuse" -loop 0 Recording.gif
 ```
+
+## Grub
+
+```bash
+# Set kernel boot parameters
+
+# Open the grub file and edit the parameters
+sudo nvim /etc/default/grub
+
+# rewrite the config
+sudo grub2-mkconfig -o /etc/grub2.cfg
+
+```
+
+
+```bash
+# To change grub menu boot order
+
+# List the installed kernels
+sudo grubby --info=ALL | grep -E "^kernel|^index"
+
+# Set the default where index=NUM is the wanted kernel
+sudo grubby --set-default-index=2
+
+# Verify the change
+sudo grubby --default-title
+
+```
+
+## VIM / NEOVIM
+
+`esc` to enter command mode
+`i` to enter insert
+`v` to enter visual mode
+
+: to enter a command
+w -> saves without exit
+x -> saves and exits
+q -> quits without saving
+qa! ->
+u -> undo last change
+ctrl-r -> redo
+
+This section will probably be a bit lengthy xD
+
+### Copy paste
+
+1. Select
+
+    in command mode: `v`
+2. Cut/copy
+    
+    `d` to cut, `y` to copy`
+
+3. Move to target location and paste
+
+    in command mode: `p`
+
+
