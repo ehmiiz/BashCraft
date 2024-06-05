@@ -2,6 +2,36 @@
 
 Personal bash tinkering
 
+## Files
+
+### cp / mv
+
+- i = asks user if overwrite is ok
+- u = only updates (if file exist, if file is newer than the existing, it moves)
+- v = verbose
+
+### rm
+
+- i, u and v (see above)
+- f (--force)
+- r (--recursive)
+
+### in
+
+creates hard or symlinks
+
+hardlink -> `in file link`
+
+- A hardlink cannot reference anything outside its own filesystem and disk partitionn
+- Hard links cannot reference a directory
+- A hard link looks like the file itself, if deleted the link is removed, but the file is left in its origin path
+
+symlink -> `in -s file link` 
+
+Similar to Windows Shortcuts
+
+
+
 ## Find a process
 
 Gets data about processes
