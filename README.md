@@ -30,7 +30,7 @@ symlink -> `ln -s file link`
 
 Similar to Windows Shortcuts
 
-## Find a process
+## Processes
 
 Gets data about processes
 
@@ -45,12 +45,71 @@ Gets process id
 pgrep processname
 ```
 
-
-## Kill process
+### Kill process
 
 ```bash
 pkill -f "processname"
 ```
+
+## Services
+
+Manage the service using the servicemanager (systemd or init.d)
+
+```bash
+# List services
+systemctl list-units --type=service
+
+# Start service
+systemctl start <service_name>
+
+# Restart a service
+systemctl restart <service_name>
+
+# Enable/disable
+systemctl enable <service_name>
+systemctl disable <service_name>
+
+# Check status of a service
+systemctl status <service_name>
+
+# init.d, legacy service manager
+sudo /etc/init.d/service_name start # or `stop`, `restart`, `status`
+cat /etc/init.d # lists all services
+```
+
+## Find stuff
+
+`-type` is useful, `d` for dir, `f` for file
+
+`-name` followed by an expression
+
+```bash
+# Find stuff by name (~ represent path to search, can be `/sbin` etc..)
+find ~ -name "filename"
+
+# Find files by extension, home folder, python files
+find ~ -name "*.py"
+
+# finds files from different user
+find ~ -user username
+
+# finds and deletes empty files {} is placeholder for found file path
+find ~ -type f -empty -exec rm {} \;
+
+# changes permish on found files
+find ~ -type f -name "*.sh" -exec chmod +x {} \;
+
+# move found files
+find ~ -name "*.log" -exec mv {} /path/to/destination/ \;
+
+# modified within the last N days (new files)
+find ~ -mtime -7
+
+# modifed more than 30 days ago (old files)
+find ~ -mtime +30
+
+```
+
 
 ## Reboot & Shutdown
 
