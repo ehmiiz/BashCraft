@@ -201,6 +201,20 @@ man -k clip
 
 ```
 
+## Disk
+
+```bash
+# report file system space usage (-h human redable)
+df -h
+```
+
+```bash
+# text based disk usage analyzer (Ncurses disk usage)
+ncdu / # system root
+
+ncdu ~ # checks userspace
+```
+
 
 ## Convert mp4 to gif
 
@@ -254,6 +268,65 @@ the 'cat' command
 EOF
 ```
 
+## Help
+
+Get help about commands. A command can be 4 different things:
+
+- Executable (binary)
+- Command built-in (like cd)
+- A shell function (scripting language function)
+- An alias
+
+use `type` to understand what something is
+
+```bash
+type bash
+# outputs: bash is /usr/bin/bash
+
+type cd
+# outputs: No manual entry for diskey
+```
+
+```bash
+# apropos find commands, wildcard find commands
+man -k theme
+```
+
+`whatis`, one line docs
+
+```bash
+whatis bash
+# outputs: bash (1) - GNU Bourne-Again SHell
+```
+
+`info`, GNU docs, readable docs
+
+```bash
+info info
+```
+
+
+## Alias
+
+- nest many commands in one alias
+
+```bash
+# cd to usr, ls, get back to previous working dir
+alias lsusr='cd /usr/; ls; cd -'
+```
+
+- remove an alias in the session (edit bashrc for perm aliases)
+
+```bash
+unalias lsusr
+```
+
+- list all session aliases
+
+```bash
+alias
+```
+
 ## VIM / NEOVIM
 
 - `esc` to enter command mode
@@ -279,11 +352,9 @@ This section will probably be a bit lengthy xD
 
     in command mode: `v`
 2. Cut/copy
-    
+
     `d` to cut, `y` to copy`
 
 3. Move to target location and paste
 
     in command mode: `p`
-
-
