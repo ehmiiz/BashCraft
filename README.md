@@ -236,6 +236,24 @@ sudo grubby --default-title
 
 ```
 
+## Here-doc & Here-string
+
+useful to provide multi-line strings to commands
+
+a heredoc is very similar to a here-string in powershell
+
+not to be confused with here-string in bash/python `<<<`, that's useful for feeding a single line of text into a command
+
+```bash
+# Heredoc syntax
+
+cat <<EOF
+This is my heredoc text
+that will be passed to
+the 'cat' command
+EOF
+```
+
 ## VIM / NEOVIM
 
 - `esc` to enter command mode
