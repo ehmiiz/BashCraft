@@ -16,21 +16,19 @@ Personal bash tinkering
 - f (--force)
 - r (--recursive)
 
-### in
+### ln
 
 creates hard or symlinks
 
-hardlink -> `in file link`
+hardlink -> `ln file link`
 
 - A hardlink cannot reference anything outside its own filesystem and disk partitionn
 - Hard links cannot reference a directory
 - A hard link looks like the file itself, if deleted the link is removed, but the file is left in its origin path
 
-symlink -> `in -s file link` 
+symlink -> `ln -s file link`
 
 Similar to Windows Shortcuts
-
-
 
 ## Find a process
 
