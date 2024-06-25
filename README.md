@@ -32,6 +32,12 @@ Similar to Windows Shortcuts
 
 ## Processes
 
+Get nicely formated data about a process:
+
+```bash
+pgrep -fl processname
+```
+
 Gets data about processes
 
 ```bash
