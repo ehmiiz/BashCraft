@@ -30,6 +30,13 @@ symlink -> `ln -s file link`
 
 Similar to Windows Shortcuts
 
+## Paths
+
+Get the full path of a file
+
+
+`realpath -n <file>`
+
 ## Processes
 
 Get nicely formated data about a process:
@@ -392,24 +399,24 @@ alias
 
 ## VIM / NEOVIM
 
+This section will probably be a bit lengthy xD
+
 - `esc` to enter command mode
 - `i` to enter insert
 - `v` to enter visual mode
 
 ### : to enter a command
 
-- w -> saves without exit
-- wq -> saves and quit
-- x -> saves and exits (same as wq)
-- q -> quits
-- q! -> quits without saving
-- qa! -> quits all without saving
-- u -> undo last change
-- ctrl-r -> redo
+- w -> Writes to file (saves) without exit
+- wq -> Writes to file (saves) and quit
+- x -> saves and eXits (same as wq)
+- q -> Quits
+- q! -> Quits Without saving
+- qa! -> Quits All without saving
+- u -> Undo last change
+- ctrl-r -> Redo
 
-This section will probably be a bit lengthy xD
-
-### Copy paste
+## Copy paste
 
 1. Select
 
