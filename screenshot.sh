@@ -16,6 +16,9 @@ gnome-screenshot -a -f "$filepath"
 if [[ -f "$filepath" ]]; then
     # Open the screenshot with KolourPaint
     flatpak run org.kde.kolourpaint "$filepath"
+
+    # Wait for the flatpak to close, then copy
+    cat $filepath | wl-copy
 else
     echo "Screenshot failed or was cancelled."
 fi
