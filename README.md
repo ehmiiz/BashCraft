@@ -1,6 +1,8 @@
 # BashCraft
 
-Personal bash tinkering
+Follow along and learn Bash by doing!
+
+Level up your [GitHub Actions](https://docs.github.com/en/actions/about-github-actions/understanding-github-actions) skills by learning the legendary [Bash](https://www.gnu.org/software/bash/)!!!
 
 ## Files
 
@@ -9,6 +11,43 @@ Personal bash tinkering
 - i = asks user if overwrite is ok
 - u = only updates (if file exist, if file is newer than the existing, it moves)
 - v = verbose
+
+### move file from variable
+
+```bash
+file_path=$(realpath ./file)
+
+mv "$filepath" /path/to/destination
+
+```
+
+## More File Operations
+
+### Directory and File Management
+```bash
+# Create multiple nested directories
+mkdir -p parent/child/grandchild
+
+# Create file with timestamp
+touch "file-$(date +%Y%m%d).txt"
+
+# Quick file backup
+cp file.txt{,.bak}
+```
+
+```bash
+#!/bin/bash
+
+# Define the source file and destination directory
+file="yourfile.txt"
+dest_dir="/path/to/destination"
+
+# Get the real path of the file
+real_file_path=$(realpath "$file")
+
+# Move the file
+mv "$real_file_path" "$dest_dir"
+```
 
 ### rm
 
@@ -29,13 +68,6 @@ hardlink -> `ln file link`
 symlink -> `ln -s file link`
 
 Similar to Windows Shortcuts
-
-## Paths
-
-Get the full path of a file
-
-
-`realpath -n <file>`
 
 ## Processes
 
@@ -123,6 +155,18 @@ find ~ -mtime +30
 
 ```
 
+## Date
+
+```bash
+# get todays date
+date
+
+# gets the date in 30 days
+date -d "+30 days"
+
+# gets the date from 30 days ago
+date -d "-30 days"
+```
 
 ## Reboot & Shutdown
 
@@ -217,6 +261,14 @@ echo $((int_variable + int_variable))
 ~$ 50
 ```
 
+### Add to Path in Bashrc
+
+```bash
+# code ~/.bashrc
+
+export PATH="$PATH:$HOME/.cargo/bin"
+```
+
 ### Regular variables
 
 ```bash
@@ -250,6 +302,8 @@ cat ./file.txt | wl-copy
 
 wl-paste
 ```
+
+Copy and paste from terminal:
 
 ## Improved ls and cat
 
@@ -301,6 +355,7 @@ ffmpeg -i Recording.mp4 -vf "fps=10,scale=640:-1:flags=lanczos,split[s0][s1];[s0
 sudo nvim /etc/default/grub
 
 # rewrite the config
+# grub writes it's config by scanning the /boot for kernel images
 sudo grub2-mkconfig -o /etc/grub2.cfg
 
 ```
@@ -310,6 +365,9 @@ sudo grub2-mkconfig -o /etc/grub2.cfg
 # To change grub menu boot order
 
 # List the installed kernels
+rpm -q kernel
+
+# List the installed kernels with more info
 sudo grubby --info=ALL | grep -E "^kernel|^index"
 
 # Set the default where index=NUM is the wanted kernel
@@ -397,34 +455,135 @@ unalias lsusr
 alias
 ```
 
-## VIM / NEOVIM
+[[neovim]]
 
-This section will probably be a bit lengthy xD
+# Terminals and shells
 
-- `esc` to enter command mode
-- `i` to enter insert
-- `v` to enter visual mode
+## Unix fileshare permissions
 
-### : to enter a command
+A file where everyone has Read, Write, eXecute:
+```
+-rwxrwxrwx
+```
 
-- w -> Writes to file (saves) without exit
-- wq -> Writes to file (saves) and quit
-- x -> saves and eXits (same as wq)
-- q -> Quits
-- q! -> Quits Without saving
-- qa! -> Quits All without saving
-- u -> Undo last change
-- ctrl-r -> Redo
+The first 3 letter represent the "Owner's" permissions (creator of file)
 
-## Copy paste
+The middle 3 letters represent the "Group's" permissions (can be assigned to a group of users)
 
-1. Select
+The last 3 letters represent "Other", meaning everyone else
 
-    in command mode: `v`
-2. Cut/copy
+## Some examples:
 
-    `d` to cut, `y` to copy`
+### Everyone (including group and owner) has Read and Execute of a file
 
-3. Move to target location and paste
+```
+-r-xr-xr-x
+```
 
-    in command mode: `p`
+###  Only owner has Read, Write, Execute of a file:
+
+```
+-rwx------
+```
+
+### A folder where everyone has Read, Write, eXecute:
+
+```
+drwxrwxrwx
+```
+
+### Chmod
+
+To change permissions, use chmod:
+
+```
+sudo chmod -R u=rwx,g=rwx,o=rwx DIRECTORY
+```
+
+Add execute rights on a python program to the user
+
+```
+chmod -x file.py
+```
+
+## Add path to $PATH
+
+Allows .py files to be executed from the cmdline
+
+Add to ~/.bashrc for consistency
+
+```
+export PATH=$PATH:/home/ehmiiz/git/python
+```
+
+## Command History & Shortcuts
+
+### History Operations
+```bash
+# Search command history
+history | grep "command"
+
+# Execute last command
+!!
+
+# Execute command number N from history
+!N
+
+# Quick substitution from last command (replace old with new)
+^old^new
+```
+
+### Keyboard Shortcuts
+```bash
+Ctrl + A  # Move cursor to beginning of line
+Ctrl + E  # Move cursor to end of line
+Ctrl + U  # Clear line before cursor
+Ctrl + K  # Clear line after cursor
+Ctrl + R  # Search command history
+Ctrl + L  # Clear screen
+```
+
+### Text Processing
+```bash
+# Count lines, words, characters
+wc -l file.txt  # lines
+wc -w file.txt  # words
+wc -c file.txt  # characters
+
+# First/last n lines
+head -n 5 file.txt
+tail -n 5 file.txt
+
+# Watch file in real-time (useful for logs)
+tail -f logfile.txt
+```
+
+## Network Operations
+
+### Basic Network Commands
+```bash
+# Check if host is reachable
+ping -c 4 google.com
+
+# Show listening ports
+ss -tulpn
+
+# Download files
+wget https://example.com/file
+curl -O https://example.com/file
+```
+
+### Advanced Process Management
+```bash
+# Run command in background
+command &
+
+# Bring background process to foreground
+fg %1
+
+# List background jobs
+jobs
+
+# Run command immune to hangup (continues after terminal closes)
+nohup command &
+```
